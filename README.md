@@ -1,8 +1,8 @@
 # Red Terroir
 
-<div align="center">
-<img src=https://10.11.1.148/bmcmillan/red-terroir/raw/master/data/images/infrastructure_diagram.png>
-</div>
+<p align="center">
+<img src=https://raw.githubusercontent.com/b3n-j4m1n/Red-Terroir/master/data/images/infrastructure_diagram.png>
+</p>
 
 ### Getting Started
 
@@ -105,13 +105,13 @@ The Droplet hostname and Route53 hosted zone A record need to match, this is han
 
 The Route53 name servers and glue records need to be updated for the domain, use the public IP of the mail server for the glue records. You don't need to use the ns1.box.domain.com subdomain Mail-in-a-Box suggests. To my knowledge this doesn't have an applicable Terraform resource, so it's done manually. The update takes a minute, you'll get an email when complete.
 
-<div align="center">
-<img src=https://10.11.1.148/bmcmillan/red-terroir/raw/master/data/images/registered_domains.png>
-</div>
+<p align="center">
+<img src=https://raw.githubusercontent.com/b3n-j4m1n/Red-Terroir/master/data/images/registered_domains.png>
+</p>
 
-<div align="center">
-<img src=https://10.11.1.148/bmcmillan/red-terroir/raw/master/data/images/glue_records.png>
-</div>
+<p align="center">
+<img src=https://raw.githubusercontent.com/b3n-j4m1n/Red-Terroir/master/data/images/glue_records.png>
+</p>
 
 ##### Mail-in-a-Box install
 
@@ -127,9 +127,9 @@ The hostname set during installation must match `mail_domain` used in the Drople
 
 You can access the mailbox at https://domain.com/mail and check a test email with https://www.mail-tester.com/
 
-<div align="center">
-<img src=https://10.11.1.148/bmcmillan/red-terroir/raw/master/data/images/mail-tester.png>
-</div>
+<p align="center">
+<img src=https://raw.githubusercontent.com/b3n-j4m1n/Red-Terroir/master/data/images/mail-tester.png>
+</p>
 
 
 ### TODO
