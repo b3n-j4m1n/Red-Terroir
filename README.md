@@ -87,7 +87,7 @@ CNAME Record     www          example.com
 
 Apache mod_rewrite can be used to redirect traffic, such as filtering out IP ranges, only allowing access between 9am-5pm, redirecting based on OS architecture, or evading IDR.
 
-It can be enabled (and ProxyPass disabled) by running `data/scripts/mod_rewrite`.Create a .htaccess file with redirection rules at `/var/www/html/.htaccess` on the phishing redirector, use the [sample .htaccess file](https://10.11.1.148/bmcmillan/red-terroir/blob/master/data/apache/.htaccess) as a reference.
+It can be enabled (and ProxyPass disabled) by running `data/scripts/mod_rewrite`.Create a .htaccess file with redirection rules at `/var/www/html/.htaccess` on the phishing redirector, use the [sample .htaccess file](https://github.com/b3n-j4m1n/Red-Terroir/blob/master/data/apache/htaccess) as a reference.
 
 ### Mail Server
 
